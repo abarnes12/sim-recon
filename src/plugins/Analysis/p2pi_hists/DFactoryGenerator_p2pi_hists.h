@@ -12,6 +12,7 @@
 #include <JANA/JFactoryGenerator.h>
 
 #include "DReaction_factory_p2pi_hists.h"
+#include "DEventWriterROOT_factory_p2pi.h"
 
 class DFactoryGenerator_p2pi_hists : public jana::JFactoryGenerator
 {
@@ -22,6 +23,7 @@ class DFactoryGenerator_p2pi_hists : public jana::JFactoryGenerator
 		jerror_t GenerateFactories(jana::JEventLoop* locEventLoop)
 		{
 			locEventLoop->AddFactory(new DReaction_factory_p2pi_hists());
+			locEventLoop->AddFactory(new DEventWriterROOT_factory_p2pi()); 
 			return NOERROR;
 		}
 };

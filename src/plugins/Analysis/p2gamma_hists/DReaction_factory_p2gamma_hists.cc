@@ -66,18 +66,20 @@ jerror_t DReaction_factory_p2gamma_hists::init(void)
 	// Custom histograms (after PID)
         locReaction->Add_AnalysisAction(new DCustomAction_p2gamma_hists(locReaction, false, "TimingCut_Measured"));
 
-	// Cuts for future analysis actions applied in CustomAction for now
-        locReaction->Add_AnalysisAction(new DCustomAction_p2gamma_cuts(locReaction, false));
+	// Custom cuts (can be applied in TSelector)
+        //locReaction->Add_AnalysisAction(new DCustomAction_p2gamma_cuts(locReaction, false));
+
+	// DCutActions that aren't written yet!
         //locReaction->Add_AnalysisAction(new DCutAction_InvariantMass(locReaction, 0, Gamma, Gamma, false, 0.1, 0.16));
 
-	// Diagnostics for unused tracks and showers with final selection
-	locReaction->Add_AnalysisAction(new DCustomAction_p2gamma_unusedHists(locReaction, false, "NoKinFit_Measured"));
+	// Diagnostics for unused tracks and showers with final selection (only useful when analyzing EVIO data)
+	//locReaction->Add_AnalysisAction(new DCustomAction_p2gamma_unusedHists(locReaction, false, "NoKinFit_Measured"));
 
-	// Cut beam energy for TTree entries
-        //locReaction->Add_AnalysisAction(new DCutAction_BeamEnergy(locReaction, false, 2.5, 3.0));
+	// Cut beam energy for TTree entries (if desired)
+	//locReaction->Add_AnalysisAction(new DCutAction_BeamEnergy(locReaction, false, 2.5, 3.0));
 
 	// Kinematics
-	locReaction->Add_AnalysisAction(new DHistogramAction_ParticleComboKinematics(locReaction, false)); //false: fill histograms with measured particle data
+	//locReaction->Add_AnalysisAction(new DHistogramAction_ParticleComboKinematics(locReaction, false)); //false: fill histograms with measured particle data
 
 	_data.push_back(locReaction); //Register the DReaction with the factory
 

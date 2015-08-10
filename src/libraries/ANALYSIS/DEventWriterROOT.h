@@ -94,6 +94,8 @@ class DEventWriterROOT : public JObject
 		template <typename DType> void Fill_ClonesData(TTree* locTree, string locParticleBranchName, string locVariableName, DType& locObject, unsigned int locArrayIndex) const;
 		template <typename DType> void Fill_TObjectData(TTree* locTree, string locParticleBranchName, string locVariableName, DType& locObject) const;
 
+		void Get_Reactions(jana::JEventLoop* locEventLoop, vector<const DReaction*>& locReactions) const;
+
 		const DAnalysisUtilities* dAnalysisUtilities;
 
 	private:
@@ -141,8 +143,6 @@ class DEventWriterROOT : public JObject
 		deque<TFile*>& Get_OutputROOTFiles(void) const;
 
 		/****************************************************************************************************************************************/
-
-		void Get_Reactions(jana::JEventLoop* locEventLoop, vector<const DReaction*>& locReactions) const;
 
 		//TREE CREATION:
 		void Create_DataTree(const DReaction* locReaction, bool locIsMCDataFlag) const;

@@ -120,22 +120,24 @@ jerror_t DReaction_factory_p2pi_hists::init(void)
         locReaction->Add_AnalysisAction(new DCustomAction_p2pi_hists(locReaction, false, "TimingCut_Measured"));
 
 	// Reaction specific cuts
-	locReaction->Add_AnalysisAction(new DCutAction_MissingMassSquared(locReaction, false, -0.02, 0.02));
-	locReaction->Add_AnalysisAction(new DCutAction_ProtonPiPlusdEdx(locReaction, 2.2, true)); //select p/pi+ above/below 2.2, //true/false: cut all/no proton candidates above p = 1 GeV/c
+	//locReaction->Add_AnalysisAction(new DCutAction_MissingMassSquared(locReaction, false, -0.02, 0.02));
+	//locReaction->Add_AnalysisAction(new DCutAction_ProtonPiPlusdEdx(locReaction, 2.2, true)); //select p/pi+ above/below 2.2, //true/false: cut all/no proton candidates above p = 1 GeV/c
 
-	// Cuts for future analysis actions applied in CustomAction for now
-	locReaction->Add_AnalysisAction(new DCustomAction_p2pi_cuts(locReaction, false));
+	// Custom cuts (can be applied in TSelector)
+	//locReaction->Add_AnalysisAction(new DCustomAction_p2pi_cuts(locReaction, false));
+	
+	// DCutActions that aren't written yet!
 	//locReaction->Add_AnalysisAction(new DCutAction_InvariantMass(locReaction, 0, PiPlus, PiMinus, false, 0.6, 0.9));
 	//locReaction->Add_AnalysisAction(new DCutAction_MissingEnergy(locReaction, false, -0.2, 0.2));
 
-	// Diagnostics for unused tracks and showers with final selection
-	locReaction->Add_AnalysisAction(new DCustomAction_p2pi_unusedHists(locReaction, false, "NoKinFit_Measured"));
+	// Diagnostics for unused tracks and showers with final selection (only useful when analyzing EVIO data)
+	//locReaction->Add_AnalysisAction(new DCustomAction_p2pi_unusedHists(locReaction, false, "NoKinFit_Measured"));
 
-	// Cut beam energy for TTree entries
+	// Cut beam energy for TTree entries (if desired)
 	//locReaction->Add_AnalysisAction(new DCutAction_BeamEnergy(locReaction, false, 2.5, 3.0));
 
 	// Kinematics of final selection
-	locReaction->Add_AnalysisAction(new DHistogramAction_ParticleComboKinematics(locReaction, false)); //false: fill histograms with measured particle data
+	//locReaction->Add_AnalysisAction(new DHistogramAction_ParticleComboKinematics(locReaction, false)); //false: fill histograms with measured particle data
 
 	_data.push_back(locReaction); //Register the DReaction with the factory
 

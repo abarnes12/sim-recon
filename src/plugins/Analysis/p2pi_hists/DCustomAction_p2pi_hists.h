@@ -17,7 +17,6 @@
 #include "JANA/JEventLoop.h"
 #include "JANA/JApplication.h"
 
-#include "TAGGER/DTAGHGeometry.h"
 #include "ANALYSIS/DAnalysisAction.h"
 #include "ANALYSIS/DReaction.h"
 #include "ANALYSIS/DParticleCombo.h"

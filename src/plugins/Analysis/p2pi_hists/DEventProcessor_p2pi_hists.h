@@ -16,6 +16,7 @@
 #include <ANALYSIS/DHistogramActions.h>
 
 #include "DFactoryGenerator_p2pi_hists.h"
+#include "DEventWriterROOT_p2pi.h"
 
 using namespace jana;
 using namespace std;
